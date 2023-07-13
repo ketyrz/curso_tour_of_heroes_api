@@ -46,8 +46,9 @@ group :development do
   # gem "spring"
 gem "faker", "~> 3.2"
 end
-gem "active_model_serializers", "~> 0.10.13"
 
 group :production do
   gem "pg", "~> 1.5"
 end
+
+gem "active_model_serializers", "~> 0.10.13"
