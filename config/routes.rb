@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   namespace :api, defaults: {format: :json} do
-    resources :heroes, only: [:create]
+    resources :heroes
   end
   get '/api/heroes/:id', to: 'api/heroes#show', as: 'api_hero_url'
 end
