@@ -21,5 +21,7 @@ test:
   database: db/test.sqlite3
 
 production:
-  <<: *default
-  database: db/production.sqlite3
+  database: curso_tour_of_heroes_api
+  adapter: postgresql
+  pool: <%= ENV.fetch("RAILS-MAX-THREADS") { 5 } %>
+  timeout: 5000
