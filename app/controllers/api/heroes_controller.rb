@@ -21,7 +21,7 @@ class Api::HeroesController < ApplicationController
     @hero = Hero.new(hero_params.to_h.merge!({token: @token}))
 
     if @hero.save
-      render json: @hero, status: :created, location: api_hero_url(@hero)
+      render json: @hero, status: :created
     else
       render json: @hero.errors, status: :unprocessable_entity
     end
