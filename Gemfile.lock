@@ -90,7 +90,7 @@ GEM
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     io-console (0.6.0)
-    irb (1.7.2)
+    irb (1.7.3)
       reline (>= 0.3.6)
     jsonapi-renderer (0.2.2)
     loofah (2.21.3)
@@ -176,7 +176,7 @@ DEPENDENCIES
   bootsnap
   debug
   faker (~> 3.2)
-  pg (~> 1.5)
+  pg
   puma (~> 5.0)
   rails (~> 7.0.6)
   sqlite3 (~> 1.4)

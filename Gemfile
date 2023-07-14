@@ -18,7 +18,7 @@ group :development do
 end
 
 group :production do
-  gem "pg", "~> 1.5"
+  gem "pg", ">= 0"
 end
 
 gem "active_model_serializers", "~> 0.10.13"
