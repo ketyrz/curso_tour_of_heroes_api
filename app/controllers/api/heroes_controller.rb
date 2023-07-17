@@ -8,6 +8,7 @@ class Api::HeroesController < ApplicationController
   def index
     @heroes = Hero.by_token(@token).search(params[:term]).sorted_by_name
 
+    logger.info "====> TOKEN: #{@token}"
     render json: @heroes
   end
 

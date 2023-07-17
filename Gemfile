@@ -13,6 +13,7 @@ gem "rack-cors", "~> 2.0"
  
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem "rspec-rails", "~> 6.0"
 end
 
 group :development do
@@ -20,5 +21,10 @@ group :development do
 end
 
 group :production do
-  gem "pg", ">= 0"
+  # gem "pg", ">= 0"
+end
+
+group :test do
+  gem "shoulda-matchers", "~> 5.3"
+  gem "simplecov", "~> 0.22.0", require: false
 end
