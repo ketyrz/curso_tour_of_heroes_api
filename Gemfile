@@ -10,6 +10,7 @@ gem "bootsnap", require: false
 gem "sqlite3", "~> 1.4"
 gem "active_model_serializers", "~> 0.10.13"
 gem "rack-cors", "~> 2.0"
+gem "rubocop", require: false
  
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
