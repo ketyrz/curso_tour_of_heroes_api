@@ -16,34 +16,23 @@ require 'rails_helper'
 
 
 RSpec.describe "/api/heroes", type: :request do
-  # This should return the minimal set of attributes required to create a valid
-  # Hero. As you add validations to Hero, be sure to
-  # adjust the attributes here as well.
-  let(:name) { 'Pantera Negra' }
-  let(:token) { '1234512345' }
-
-  let(:valid_attributes) {
-    { name: name, token: token }
-  }
-
-  let(:invalid_attributes) {
-    { name: nil, token: token }
-  }
+  let(:valid_attributes) { attributes_for :hero }
+  let(:invalid_attributes) { attributes_for :invalid_hero }
 
   # This should return the minimal set of values that should be in the headers
   # in order to pass any filters (e.g. authentication) defined in
   # HerosController, or in your router and rack
   # middleware. Be sure to keep this updated too.
-  let(:valid_headers) {
-    { Authorization: token }
-  }
+  let(:valid_headers) { Authorization: valid_attributes[:token] }
+  let(:invalid_headers) { Authorization: '123456789' }
 
   describe "GET /index" do
     context 'with headers' do
       it "renders a successful response" do
-        Hero.create! valid_attributes
+        hero = Hero.create! valid_attributes
         get api_heroes_url, headers: valid_headers, as: :json
         expect(response).to be_successful
+        expect(json_response[0][:name]).to eq hero.name
       end
     end
     
@@ -51,6 +40,14 @@ RSpec.describe "/api/heroes", type: :request do
       it "renders a JSON response with an unauthorized status" do
         Hero.create! valid_attributes
         get api_heroes_url, as: :json
+        expect(response).to have_http_status(:unauthorized)
+      end
+    end
+
+    context 'with invalid headers' do
+      it "renders a JSON response with an unauthorized status" do
+        Hero.create! valid_attributes
+        get api_heroes_url, headers: invalid_headers, as: :json
         expect(response).to have_http_status(:unauthorized)
       end
     end
@@ -100,18 +97,14 @@ RSpec.describe "/api/heroes", type: :request do
 
   describe "PATCH /update" do
     context "with valid parameters" do
-      let(:new_name) { 'Coringa' }
-
-      let(:new_attributes) {
-        { name: new_name }
-      }
+      let(:new_attributes) { attributes_for :hero }
 
       it "updates the requested hero" do
         hero = Hero.create! valid_attributes
         patch api_hero_url(hero),
               params: { hero: new_attributes }, headers: valid_headers, as: :json
         hero.reload
-        expect(hero.name).to eq(new_name)
+        expect(hero.name).to eq(new_attributes[:name])
       end
 
       it "renders a JSON response with the hero" do
