@@ -3,7 +3,11 @@ class HeroesController < ApplicationController
 
   # GET /heroes
   def index
+<<<<<<< HEAD:app/controllers/heroes_controller.rb
     @heroes = Hero.all
+=======
+    @heroes = Hero.by_token(@token).search(params[:name]).sorted_by_name
+>>>>>>> 16-test-requests:app/controllers/api/heroes_controller.rb
 
     render json: @heroes
   end
