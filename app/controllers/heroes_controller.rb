@@ -1,4 +1,5 @@
 class HeroesController < ApplicationController
+  before_action :authenticate_with_token
   before_action :set_hero, only: %i[ show update destroy ]
 
   # GET /heroes
