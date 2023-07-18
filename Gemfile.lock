@@ -84,6 +84,11 @@ GEM
     diff-lcs (1.5.0)
     docile (1.4.0)
     erubi (1.12.0)
+    factory_bot (6.2.1)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.2.0)
+      factory_bot (~> 6.2.0)
+      railties (>= 5.0.0)
     faker (3.2.0)
       i18n (>= 1.8.11, < 2)
     globalid (1.1.0)
@@ -225,6 +230,7 @@ DEPENDENCIES
   active_model_serializers (~> 0.10.13)
   bootsnap
   byebug
+  factory_bot_rails (~> 6.2)
   faker (~> 3.2)
   pg (~> 1.5, >= 1.5.3)
   puma (~> 5.0)
